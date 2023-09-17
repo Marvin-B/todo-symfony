@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TODO List{% endblock %}
+
+{% block body %}
+
+<h1 class="text-center">TODO List</h1>
+<div class="date">
+    <div class="day">
+        {{ date }}
+    </div>
+    <div id="hour">
+        {{ hours }}
+    </div>
+</div>
+
+
+{# <div id="task_add">
+    <form action="" method="post" class="d-flex">
+        <div class="form-group">
+            <input type="text" name="task" class="form-control" placeholder="Exemple : appeler le médecin">
+        </div>
+        <div class="form-group">
+            <input type="date" name="taskdate" class="form-control">
+        </div>
+        <a href="{{ path('app_task_new') }}" class="btn btn-success">Ajouter</a>   
+    </form>
+</div> #}
+
+<div hx-trigger="load" hx-get="{{ path('app_task_new') }}" id="task_add"></div>
+
+<div id="task_group">
+
+    {% for task in tasks %}
+
+    {% if task %}
+     <div class="task">
+        <div class="task_text">
+            <span class="task_title">{{ task.title }}</span>
+            <span class="task_hour">{{ task.date|date('d M Y')}} à {{ task.date|date('H') }}h{{ task.date|date('i') }}</span>
+        </div>
+
+        <div class="task_crud">
+            <a href="{{ path('app_task_edit', {'id': task.id}) }}" class="btn btn-primary" hx-post-"test">Editer</a>
+            <form method="post" action="{{ path('app_task_delete', {'id': task.id}) }}" onsubmit="return confirm('Confirmer la suppression de la tâche ?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
+                <button class="btn btn-danger">Supprimer</button>
+            </form>
+        </div>
+    </div>
+
+    {% endif %}
+
+
+    {% else %}
+    
+    <div class="text-center fw-bold">Il n'y a pas de tâches à afficher</div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

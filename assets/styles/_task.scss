@@ -1,0 +1,90 @@
+div#task_group{
+    max-width:500px;
+    border: 1px solid #000;
+    padding:.5rem;
+    margin: 1rem auto;
+}
+
+div.task{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #000;
+    padding: 1rem 0;
+    &:last-child{
+        border-bottom: none;
+    }
+    div.task_text{
+        display:flex;
+        flex-direction:column;
+        span.task_title{
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-bottom: 1px solid #ccc;
+            margin-bottom:.5rem;
+        }
+        span.task_hour{
+            font-size: 1rem;
+        }
+    }
+    div.task_crud{
+        display:flex;
+        grid-gap: .3rem;
+    }
+}
+
+div#task_add{
+    margin: 0 auto;
+    max-width: 500px;
+    form{
+        justify-content:space-between;
+        .form-group{
+            margin: 0 .5rem;
+            &:first-child{
+                flex:2;
+                margin-left:0;
+            }
+            &:last-child{
+                margin-right:0;
+            }
+        }
+    }
+}
+
+//////////////// DATE ///////////////////////
+
+div.date{
+    max-width:500px;
+    margin: 1rem auto 2rem auto;
+    padding: 1rem;
+    font-size: 1.1rem;
+    div.day{
+        text-align: center;
+        margin-bottom:.25rem;
+        .day_name{
+
+        }
+        .day_number{
+
+        }
+        .day_month{
+
+        }
+        .day_year{
+
+        }
+    }
+    div#hour{
+        font-family:monospace, sans-serif;
+        text-align: center;
+        .hour_number{
+
+        }
+        .hour_minute{
+
+        }
+        .hour_second{
+
+        }
+    }
+}
